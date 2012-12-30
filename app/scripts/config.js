@@ -8,28 +8,25 @@ require.config({
 
   baseUrl: '/scripts',
   // deps holds dependencies to load as soon as require is defined.
-  deps: [ 'main', 'backbone.marionette.handlebars' ],
+  deps: [ 'main' ],
 
   // Paths that contain the various different javascript files.
   paths: {
 
-    'plugins': 'vendor/plugins',
-
-    // Components paths.
-    'components'              : '../components',
-    'jquery'                  : '../components/jquery/jquery',
-    'jquery.cookie'           : '../components/jquery.cookie/jquery.cookie',
-    'underscore'              : '../components/lodash/lodash',
-    'backbone'                : '../components/backbone/backbone',
-    'backbone.wreqr'          : '../components/backbone.wreqr/lib/backbone.wreqr',
-    'backbone.eventbinder'    : '../components/backbone.eventbinder/lib/backbone.eventbinder',
-    'backbone.babysitter'     : '../components/backbone.babysitter/lib/backbone.babysitter',
-    'handlebars'              : '../components/handlebars/handlebars-10.0.0-rc.1',
+    'models.module' : 'modules/models.module',
+    'layout.module' : 'modules/layout.module',
 
     // Vendor paths.
-    'logger'                           : 'vendor/logger',
-    'backbone.marionette'              : 'vendor/backbone.marionette',
-    'backbone.marionette.handlebars'   : 'vendor/backbone.marionette.handlebars'
+    'logger' : 'vendor/logger',
+    'json2' : 'vendor/json2',
+    'jquery' : 'vendor/jquery',
+    'jquery.cookie' : 'vendor/jquery/jquery.cookie',
+    'underscore' : 'vendor/lodash',
+    'backbone' : 'vendor/backbone',
+    'backbone.wreqr' : 'vendor/backbone/backbone.wreqr',
+    'backbone.eventbinder' : 'vendor/backbone/backbone.eventbinder',
+    'backbone.babysitter' : 'vendor/backbone/backbone.babysitter',
+    'backbone.marionette' : 'vendor/backbone/backbone.marionette',
   },
 
   /*
@@ -38,14 +35,12 @@ require.config({
    * dependencies and set a module value.
    */
   shim: {
-    // Backbone depends on both jquery and underscore. Backbone is available
-    // as the 'Backbone' object in the window namespace.
     'backbone': {
-      deps: ['jquery', 'underscore'],
+      deps: [ 'jquery', 'underscore' ],
       exports: 'Backbone'
     },
     'backbone.marionette': {
-      deps: ['backbone'],
+      deps: [ 'backbone' ],
       exports: 'Marionette'
     }
   }

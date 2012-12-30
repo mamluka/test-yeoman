@@ -1,25 +1,19 @@
-/* 
- * 
- */
 /* jslint browser: true */
+
 define([
-
-  // Libraries.
   'jquery',
-
-  // The application.
   'app',
-
-  // Misc.
   'routes/router',
-  'helpers/session'
+  'logger'
 
-], function($, App, router, session) {
+], function($, App, router, Logger) {
   'use strict';
 
-  // Use jquery's document ready function to start the app as soon as the DOM
-  // was fully loaded.
   $(function() {
+
+    var logger = Logger.get('Main');
+
+    logger.info('Start App');
 
     App.Router = router;
     App.start();

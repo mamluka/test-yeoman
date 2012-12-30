@@ -1,42 +1,41 @@
 /* 
- * The controller is basically just a collection of methods that correspond
+ * The controller is a collection of methods that correspond
  * to routes and are called by the application router.
  */
 /*jslint browser: true*/
+
 define([
 
-  // Application.
   'app',
-
-  // Misc.
   'helpers/session',
   'logger'
 
-], function( App, session, Logger ) {
+], function( App, Session, Logger ) {
   'use strict';
+
+  var logger = Logger.get('Controller');
 
   return {
 
     // The main page.
     index: function() {
 
-      Logger.info('called index-controller');
+      logger.info('called index-controller');
     },
 
     // The login page.
     login: function() {
 
-      Logger.info('called login-controller');
+      logger.info('called login-controller');
     },
 
     // Redirects to the login screen if the user is not logged in.
     isAuthenticated: function() {
-      if (!session.authenticated()) {
+      if (!Session.authenticated()) {
         App.Router.navigate('login', {
           trigger: true
         });
       }
     }
   };
-  
 });

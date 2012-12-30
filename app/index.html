@@ -13,12 +13,7 @@
 
     </head>
     <body>
-    <div class="container">
-        <div class="hero-unit">
-            <h1>Cheerio!</h1>
-        </div>
-    </div>
-    <div id="test"></div>
+        <div id="main"></div>
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
@@ -28,8 +23,12 @@
         <!-- build:js scripts/scripts.js -->
         <script data-main="scripts/config" src="scripts/vendor/require.js"></script>
         <!-- endbuild -->
-        <script id="entry-template" type="text/x-handlebars-template">
-            template content
+        <!-- Begin Templates -->
+        <script type="text/template" id="welcome-template">
+            <p>Welcome</p>
+            <p><%= firstName %></p>
+            <p><%= lastName %></p>
         </script>
+        <!-- End Templates -->
     </body>
 </html>
