@@ -5,20 +5,32 @@
 
 define([
 
+  'logger',
   'jquery',
   'underscore',
+  'when',
   'backbone',
   'backbone.marionette',
-  'logger',
   'modules/models.module'
 
-], function($, _, Backbone, Marionette, Logger, ModelsModule) {
+], function(
+
+  Logger, 
+  $, 
+  _, 
+  when, 
+  Backbone, 
+  Marionette, 
+  ModelsModule
+
+  ) {
   'use strict';
 
   var logger = Logger.get('InitLayout');
 
   var InitLayout = Backbone.Marionette.Controller.extend({
-    initialize: function(callback) {
+
+    initialize: function(resolver) {
 
       logger.info('Init');
 
@@ -31,9 +43,9 @@ define([
 
       var userModel = ModelsModule.userModel;
 
-      console.log(ModelsModule);
-      
-      console.log(userModel);
+      // logger(ModelsModule);
+      // logger(userModel);
+
       var welcomeView = new WelcomeView({
         model: userModel
       });
@@ -48,7 +60,7 @@ define([
 
       App.mainRegion.show(welcomeView);
 
-      callback();
+      resolver.resolve();
     }
   });
 

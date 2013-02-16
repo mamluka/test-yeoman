@@ -5,16 +5,17 @@
 
 define([
 
-  'jquery',
-  'underscore',
-  'backbone',
-  'backbone.marionette',
   'logger',
-  'init/init.controller',
-  'models/user.model',
-  'models/base.model'
+  'backbone.marionette',
+  'init/init.controller'
 
-], function($, _, Backbone, Marionette, Logger, InitController, UserModel, BaseModel) {
+], function(
+
+  Logger, 
+  Marionette, 
+  InitController
+
+  ) {
   'use strict';
 
   var logger = Logger.get('App');
@@ -24,7 +25,7 @@ define([
   window.App = App; // <--- Make Global
 
   var initController = new InitController(this);
-    initController.bindTo(initController, 'init:complete', function(){
+    initController.bindTo(initController, 'init:complete', function() {
     logger.info('------------------------');
     logger.info('Initialization complete.');
     logger.info('------------------------');
@@ -33,8 +34,7 @@ define([
   // Marionette Initialization stuff.
   App.addInitializer(function() {
     logger.info('"initializer"');
-    // How does Marionette know when these are complete?
-    // It doesn't.
+    // Do not handle async operations here.
   });
 
   // Before initialization

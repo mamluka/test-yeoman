@@ -19,7 +19,8 @@ require.config({
     // Vendor paths.
     'logger' : 'vendor/logger',
     'json2' : 'vendor/json2',
-    'nimble' : 'vendor/nimble',
+    'when' : 'vendor/when',
+    'sequence' : 'vendor/when/sequence',
     'jquery' : 'vendor/jquery',
     'jquery.cookie' : 'vendor/jquery/jquery.cookie',
     'underscore' : 'vendor/lodash',
@@ -36,9 +37,6 @@ require.config({
    * dependencies and set a module value.
    */
   shim: {
-    'nimble': {
-      exports: 'Nimble'
-    },
     'backbone': {
       deps: [ 'jquery', 'underscore' ],
       exports: 'Backbone'

@@ -5,11 +5,19 @@
 
 define([
 
+  'logger',
+  'when',
   'backbone',
-  'backbone.marionette',
-  'logger'
+  'backbone.marionette'
 
-], function(Backbone, Marionette, Logger) {
+], function(
+
+  Logger,
+  when, 
+  Backbone, 
+  Marionette
+
+  ) {
   'use strict';
 
   var logger = Logger.get('InitBackbone');
@@ -20,8 +28,9 @@ define([
     };
   };
 
-  var InitBackbone = Backbone.Marionette.Controller.extend({
-    initialize: function(callback) {
+  return Backbone.Marionette.Controller.extend({
+    
+    initialize: function(resolver) {
       logger.info('Init');
 
       addSuperClassCall(Backbone.Model);
@@ -29,9 +38,7 @@ define([
       addSuperClassCall(Backbone.View);
       addSuperClassCall(Backbone.Marionette.ItemView);
 
-      callback();
+      resolver.resolve();
     }
   });
-
-  return InitBackbone;
 });
