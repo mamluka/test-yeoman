@@ -5,46 +5,69 @@
 
 define([
 
+  'logger',
   'jquery',
   'underscore',
+  'when',
   'backbone',
   'backbone.marionette',
-  'logger',
   'modules/models.module'
 
-], function($, _, Backbone, Marionette, Logger, ModelsModule) {
+], function(
+  
+  Logger, 
+  $, 
+  _, 
+  when, 
+  Backbone, 
+  Marionette, 
+  ModelsModule
+
+  ) {
   'use strict';
 
   var logger = Logger.get('InitModels');
 
-  var loadConfig = function(onSuccess, onFailure) {
+  var loadConfig = function() {
     logger.info('Load Config');
 
-    $.getJSON('data/config.json')
-    .success(function(data) {
+    var promise = $.getJSON('data/config.json');
+
+    when(promise, function(result) {
       logger.info('Load Config : Success');
-      logger.info(data);
-      onSuccess(data);
-    }).error(function(error) {
+      logger.info(result);
+    }, function(reason) {
       logger.info('Load Config : Failure');
-      logger.info(error);
-      onFailure(error);
+      logger.info(reason);
     });
+
+    return promise;
   };
 
   var InitModels = Backbone.Marionette.Controller.extend({
-    initialize: function(callback) {
+
+    initialize: function(resolver) {
 
       logger.info('Init');
 
-      var modelsModule = new ModelsModule();
+      var promise;
+      var promises = [];
 
-      loadConfig(function(data) {
-        callback();
+      promises.push(loadConfig());
+
+      when.all(promises, function() {
+        logger.info('-----------------');
+        logger.info('All models ready.');
+        logger.info('-----------------');
+        resolver.resolve();
       }, function() {
-        callback();
+        logger.info('----------------------------');
+        logger.info('!!! All models not ready !!!');
+        logger.info('----------------------------');
+        resolver.reject();
       });
     }
+
   });
 
   return InitModels;

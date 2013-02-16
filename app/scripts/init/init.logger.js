@@ -5,28 +5,34 @@
 
 define([
 
+  'logger',
+  'when',
   'backbone',
-  'backbone.marionette',
-  'logger'
+  'backbone.marionette'
 
-], function(Backbone, Marionette, Logger) {
+], function(
+
+  Logger, 
+  when, 
+  Backbone, 
+  Marionette
+
+  ) {
   'use strict';
 
-  var logger = Logger.get('InitLogger');
+  return Backbone.Marionette.Controller.extend({
 
-  var InitLogger = Backbone.Marionette.Controller.extend({
-    initialize: function(callback) {
+    initialize: function(resolver) {
       
       Logger.useDefaults();
 
+      var logger = Logger.get('InitLogger');
       logger.warn('-------------------------------------------------');
       logger.warn('There should be no console logs before this line.');
       logger.warn('-------------------------------------------------');
       logger.info('Init');
 
-      callback();
+      resolver.resolve();
     }
   });
-
-  return InitLogger;
 });

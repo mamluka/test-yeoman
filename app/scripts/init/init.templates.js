@@ -5,28 +5,34 @@
 
 define([
 
+  'logger',
   'underscore',
+  'when',
   'backbone',
-  'backbone.marionette',
-  'logger'
+  'backbone.marionette'
 
-], function(_, Backbone, Marionette, Logger) {
+], function(
+
+  Logger,
+  _, 
+  when, 
+  Backbone, 
+  Marionette 
+
+  ) {
   'use strict';
 
-  var logger = Logger.get('InitTemplates');
+  return Backbone.Marionette.Controller.extend({
+    
+    initialize: function(resolver) {
 
-  var InitTemplates = Backbone.Marionette.Controller.extend({
-    initialize: function(callback) {
-
-      logger.info('Init');
+      Logger.get('InitTemplates').info('Init');
 
       _.templateSettings = {
         interpolate : /\{\{(.+?)\}\}/g
       };
 
-      callback();
+      resolver.resolve();
     }
   });
-
-  return InitTemplates;
 });

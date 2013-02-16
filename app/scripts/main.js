@@ -1,12 +1,12 @@
 /* jslint browser: true */
 
 define([
+  'logger',
   'jquery',
   'app',
-  'routes/router',
-  'logger'
+  'routes/router'
 
-], function($, App, router, Logger) {
+], function(Logger, $, App, router) {
   'use strict';
 
   $(function() {

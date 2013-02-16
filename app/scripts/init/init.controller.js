@@ -1,13 +1,10 @@
-/*
- *
- */
 /*jslint browser: true*/
 
 define([
 
   'logger',
-  'nimble',
-  'backbone',
+  'when',
+  'sequence',
   'backbone.marionette',
   'init/init.logger',
   'init/init.templates',
@@ -16,30 +13,56 @@ define([
   'init/init.layout'
 
 ], function(
+
   Logger,
-  Nimble,
-  Backbone,
+  when,
+  sequence,
   Marionette,
   InitLogger,
   InitTemplates,
   InitBackbone,
   InitModels,
   InitLayout
+  
   ) {
   'use strict';
 
   var logger = Logger.get('Init');
 
-  var getInitializer = function(ModuleClass, index) {
-    return function(callback) {
-      new ModuleClass(callback);
-    };
-  };
+  return Backbone.Marionette.Controller.extend({
 
-  var InitController = Backbone.Marionette.Controller.extend({
     initialize: function(app) {
 
       var self = this;
+
+      var onComplete = function() {
+
+        logger.info('Complete');
+
+        Backbone.history.start({
+          pushState: true
+        });
+
+        self.trigger('init:complete');
+      };
+
+      var onFailure = function() {
+
+        logger.info('Failure');
+
+        self.trigger('init:failure');
+      };
+
+      var getInitializer = function (ModuleClass, index) {
+
+        var deffered = when.defer();
+        var promise = deffered.promise
+        var resolver = deffered.resolver
+
+        new ModuleClass(resolver);
+
+        return promise;
+      };
 
       var modules = [
         InitLogger,
@@ -51,20 +74,8 @@ define([
 
       var initializers = $.map(modules, getInitializer);
 
-      var onComplete = function() {
-
-        logger.info('Start Backbone');
-
-        Backbone.history.start({
-          pushState: true
-        });
-
-        self.trigger('init:complete');
-      };
-
-      Nimble.series(initializers, onComplete);
+      // sequence(initializers, onComplete, onFailure);
+      when.all(initializers, onComplete, onFailure);
     }
   });
-
-  return InitController;
 });
