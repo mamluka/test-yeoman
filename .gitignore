@@ -66,8 +66,9 @@ publish
 
 # Project specific #
 ####################
-/build/*
 /public/*
+/build/*
+/dist/*
 /tmp/*
 /temp/*
 components
