@@ -1,8 +1,3 @@
-/*
- *
- */
-/*jslint browser: true*/
-
 define([
 
   'logger',

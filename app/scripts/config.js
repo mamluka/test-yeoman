@@ -6,9 +6,9 @@
  */
 require.config({
 
-  baseUrl: '/scripts',
+  // baseUrl: '/scripts',
   // deps holds dependencies to load as soon as require is defined.
-  deps: [ 'main' ],
+  // deps: [ 'main' ],
 
   // Paths that contain the various different javascript files.
   paths: {
@@ -17,6 +17,8 @@ require.config({
     // 'layout.module' : 'modules/layout.module',
 
     // Vendor paths.
+    'hm': 'vendor/hm',
+    'esprima': 'vendor/esprima',
     'logger' : 'vendor/logger',
     'json2' : 'vendor/json2',
     'when' : 'vendor/when',
