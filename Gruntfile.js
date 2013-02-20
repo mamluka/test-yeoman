@@ -168,6 +168,8 @@ module.exports = function( grunt ) {
       // no minification, is done by the min task
       optimize: 'none',
       baseUrl: './scripts',
+      name: 'main',
+      mainConfigFile: './scripts/config.js',
       wrap: true
     },
   });
