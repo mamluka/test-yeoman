@@ -13,8 +13,8 @@ require.config({
   // Paths that contain the various different javascript files.
   paths: {
 
-    'models.module' : 'modules/models.module',
-    'layout.module' : 'modules/layout.module',
+    // 'models.module' : 'modules/models.module',
+    // 'layout.module' : 'modules/layout.module',
 
     // Vendor paths.
     'logger' : 'vendor/logger',

@@ -4,22 +4,19 @@
 /*jslint browser: true*/
 define([
 
-  // Libraries.
-  'backbone',
   'backbone.marionette',
-
-  // Modules.
   'routes/controller'
   
-], function(Backbone, Marionette, controller) {
+], function(Marionette, controller) {
   'use strict';
 
-  var Router = Backbone.Marionette.AppRouter.extend({
+  var Router = Marionette.AppRouter.extend({
 
     appRoutes: {
-
-      '' : 'index'
-
+      
+      '' : 'index',
+      'login' : 'login',
+      '*default' : 'default'
     }
 
   });

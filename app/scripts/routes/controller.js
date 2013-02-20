@@ -17,16 +17,19 @@ define([
 
   return {
 
-    // The main page.
     index: function() {
-
-      logger.info('called index-controller');
+      logger.info('index');
+    },
+    
+    login: function() {
+      logger.info('login');
     },
 
-    // The login page.
-    login: function() {
-
-      logger.info('called login-controller');
+    default: function() {
+      logger.info('default');
+      App.Router.navigate('', {
+          trigger: true
+      });
     },
 
     // Redirects to the login screen if the user is not logged in.
@@ -37,5 +40,6 @@ define([
         });
       }
     }
+
   };
 });

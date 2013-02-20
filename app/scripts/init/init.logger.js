@@ -6,21 +6,17 @@
 define([
 
   'logger',
-  'when',
-  'backbone',
   'backbone.marionette'
 
 ], function(
 
-  Logger, 
-  when, 
-  Backbone, 
+  Logger,
   Marionette
 
   ) {
   'use strict';
 
-  return Backbone.Marionette.Controller.extend({
+  return Marionette.Controller.extend({
 
     initialize: function(resolver) {
       

@@ -31,39 +31,30 @@ define([
 
   return Backbone.Marionette.Controller.extend({
 
-    initialize: function(app) {
+    initialize: function() {
 
       var self = this;
 
       var onComplete = function() {
 
-        logger.info('Complete');
-
-        Backbone.history.start({
-          pushState: true
-        });
+        logger.info('---------------------------------');
+        logger.info('Dependent initialization success.');
+        logger.info('---------------------------------');
 
         self.trigger('init:complete');
       };
 
-      var onFailure = function() {
+      var onFailure = function(reason) {
 
-        logger.info('Failure');
+        logger.info('---------------------------------');
+        logger.info('Dependent initialization failure.');
+        logger.info(reason);
+        logger.info('---------------------------------');
 
         self.trigger('init:failure');
       };
 
-      var getInitializer = function (ModuleClass, index) {
-
-        var deffered = when.defer();
-        var promise = deffered.promise
-        var resolver = deffered.resolver
-
-        new ModuleClass(resolver);
-
-        return promise;
-      };
-
+      // List of modules to initialize
       var modules = [
         InitLogger,
         InitTemplates,
@@ -72,10 +63,23 @@ define([
         InitLayout
       ];
 
-      var initializers = $.map(modules, getInitializer);
+      var initializers = $.map(modules, function (ModuleClass, index) {
 
-      // sequence(initializers, onComplete, onFailure);
-      when.all(initializers, onComplete, onFailure);
+        return function() {
+
+          var deffered = when.defer();
+          var promise = deffered.promise
+          var resolver = deffered.resolver
+
+          new ModuleClass(resolver);
+
+          return promise;
+        };
+
+      });
+
+      sequence(initializers).then(onComplete, onFailure);
     }
+
   });
 });
