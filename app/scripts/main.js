@@ -6,7 +6,14 @@ define([
   'app',
   'routes/router'
 
-], function(Logger, $, App, router) {
+], function(
+
+  Logger, 
+  $, 
+  App, 
+  router
+
+  ) {
   'use strict';
 
   $(function() {

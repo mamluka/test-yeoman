@@ -7,19 +7,15 @@ define([
 
   'logger',
   'jquery',
-  'underscore',
   'when',
-  'backbone',
   'backbone.marionette',
   'modules/models.module'
 
 ], function(
   
   Logger, 
-  $, 
-  _, 
-  when, 
-  Backbone, 
+  $,
+  when,
   Marionette, 
   ModelsModule
 
@@ -44,7 +40,7 @@ define([
     return promise;
   };
 
-  var InitModels = Backbone.Marionette.Controller.extend({
+  return Marionette.Controller.extend({
 
     initialize: function(resolver) {
 
@@ -69,6 +65,4 @@ define([
     }
 
   });
-
-  return InitModels;
 });

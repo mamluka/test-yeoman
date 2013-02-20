@@ -6,14 +6,12 @@
 define([
 
   'logger',
-  'when',
   'backbone',
   'backbone.marionette'
 
 ], function(
 
   Logger,
-  when, 
   Backbone, 
   Marionette
 
@@ -28,7 +26,7 @@ define([
     };
   };
 
-  return Backbone.Marionette.Controller.extend({
+  return Marionette.Controller.extend({
     
     initialize: function(resolver) {
       logger.info('Init');

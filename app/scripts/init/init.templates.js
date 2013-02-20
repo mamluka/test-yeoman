@@ -7,22 +7,18 @@ define([
 
   'logger',
   'underscore',
-  'when',
-  'backbone',
   'backbone.marionette'
 
 ], function(
 
   Logger,
   _, 
-  when, 
-  Backbone, 
   Marionette 
 
   ) {
   'use strict';
 
-  return Backbone.Marionette.Controller.extend({
+  return Marionette.Controller.extend({
     
     initialize: function(resolver) {
 

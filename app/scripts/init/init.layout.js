@@ -6,20 +6,12 @@
 define([
 
   'logger',
-  'jquery',
-  'underscore',
-  'when',
-  'backbone',
   'backbone.marionette',
   'modules/models.module'
 
 ], function(
 
-  Logger, 
-  $, 
-  _, 
-  when, 
-  Backbone, 
+  Logger,
   Marionette, 
   ModelsModule
 
@@ -28,15 +20,16 @@ define([
 
   var logger = Logger.get('InitLayout');
 
-  var InitLayout = Backbone.Marionette.Controller.extend({
+  return Marionette.Controller.extend({
 
     initialize: function(resolver) {
 
+      // NOTE : [RKP] : Circular dependency here, so can't use as param
+      var App = require('app');
+
       logger.info('Init');
 
-      var App = window.App;
-
-      var WelcomeView = Backbone.Marionette.ItemView.extend({
+      var WelcomeView = Marionette.ItemView.extend({
         template: "#welcome-template",
         className: 'welcome'
       });
@@ -63,6 +56,4 @@ define([
       resolver.resolve();
     }
   });
-
-  return InitLayout;
 });

@@ -22,35 +22,44 @@ define([
 
   var App = new Marionette.Application();
 
-  window.App = App; // <--- Make Global
-
-  var initController = new InitController(this);
-    initController.bindTo(initController, 'init:complete', function() {
-    logger.info('------------------------');
-    logger.info('Initialization complete.');
-    logger.info('------------------------');
-  });
-
-  // Marionette Initialization stuff.
-  App.addInitializer(function() {
-    logger.info('"initializer"');
-    // Do not handle async operations here.
-  });
-
-  // Before initialization
-  App.on('initialize:before', function() {
-    logger.info('"initialize:before"');
-  });
-
   // After initializers
   App.on('initialize:after', function() {
     logger.info('"initialize:after"');
-  });
+    logger.info('-----------------------');
 
-  // After, after initializers
-  App.on('start', function() {
-    logger.info('"application:start"');
-  });
+    // ****************************************************
+    // Blocking initialization routine for async operations
+    // ****************************************************
 
+    var onSuccess = function() {
+      logger.info('Initialization success.');
+
+      // Continue with post-initialization routines
+      startApplication();
+    };
+
+    var onFailure = function() {
+      logger.info('Initialization failure.');
+      logger.info('-----------------------');
+
+      // TODO : [RKP] : Handle initialization failure
+    };
+
+    var startApplication = function() {
+      logger.info('Initialization started.');
+      logger.info('-----------------------');
+
+      // Start Backbone history
+      logger.info('Starting Backbone')
+      Backbone.history.start({
+        pushState: false
+      });
+    };
+
+    var initController = new InitController();
+    initController.bindTo(initController, 'init:complete', onSuccess, onFailure);
+
+  });
+  
   return App;
 });
