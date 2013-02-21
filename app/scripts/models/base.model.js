@@ -1,30 +1,28 @@
-/*
- *
- */
-/*jslint browser: true*/
-
 define([
 
-  'jquery',
-  'underscore',
-  'backbone',
-  'backbone.marionette',
-  'logger'
+  'logger',
+  'backbone'
 
-], function($, _, Backbone, Marionette, Logger) {
+], function(
+
+  Logger, 
+  Backbone
+
+  ) {
+
   'use strict';
 
   var className = 'BaseModel';
 
-  var BaseModel = Backbone.Model.extend(
-    {
+  return Backbone.Model.extend({
+
       className: className,
+
       initialize: function() {
         this.logger = Logger.get(this.className);
         this.logger.info('initialize');
       }
     }
   );
-
-  return BaseModel;
+  
 });

@@ -1,6 +1,6 @@
 require.config({
 
-  baseUrl: '/scripts',
+  baseUrl: 'scripts',
 
   deps: [ 
     'main' /* main.js loads next */
@@ -8,18 +8,19 @@ require.config({
 
   paths: {
 
+    /* vendor */
     'logger' : 'vendor/logger',
-    'json2' : 'vendor/json2',
-    'when' : 'vendor/when',
-    'sequence' : 'vendor/when/sequence',
-    'jquery' : 'vendor/jquery',
-    'jquery.cookie' : 'vendor/jquery/jquery.cookie',
-    'underscore' : 'vendor/lodash',
-    'backbone' : 'vendor/backbone',
-    'backbone.wreqr' : 'vendor/backbone/backbone.wreqr',
-    'backbone.eventbinder' : 'vendor/backbone/backbone.eventbinder',
-    'backbone.babysitter' : 'vendor/backbone/backbone.babysitter',
-    'backbone.marionette' : 'vendor/backbone/backbone.marionette'
+    /* components */
+    'json2' : 'vendor/components/json2/json2',
+    'when' : 'vendor/components/when/when',
+    'sequence' : 'vendor/components/when/sequence',
+    'jquery' : 'vendor/components/jquery/jquery',
+    'jquery.cookie' : 'vendor/components/jquery.cookie/jquery.cookie',
+    'underscore' : 'vendor/components/lodash/lodash',
+    'backbone' : 'vendor/components/backbone/backbone',
+    'backbone.wreqr' : 'vendor/components/backbone.wreqr/lib/amd/backbone.wreqr',
+    'backbone.babysitter' : 'vendor/components/backbone.babysitter/lib/amd/backbone.babysitter',
+    'backbone.marionette' : 'vendor/components/backbone.marionette/lib/core/amd/backbone.marionette'
 
   },
 
@@ -28,11 +29,6 @@ require.config({
     'backbone': {
       deps: [ 'jquery', 'underscore' ],
       exports: 'Backbone'
-    },
-
-    'backbone.marionette': {
-      deps: [ 'backbone' ],
-      exports: 'Marionette'
     }
 
   },
