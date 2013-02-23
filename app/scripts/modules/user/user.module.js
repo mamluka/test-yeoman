@@ -2,13 +2,16 @@ define([
 
   'logger',
   'backbone.marionette',
+  'backbone.marionette.handlebars',
   'modules/user/user.model',
-  'modules/user/user.view.welcome'
+  'modules/user/user.view.welcome',
+  'hbs!modules/user/user.template',
 
 ], function(
 
   Logger, 
   Marionette, 
+  MarionetteHandlebars, 
   UserModel,
   WelcomeView
 
@@ -37,7 +40,11 @@ define([
         model: new UserModel({
           firstName: 'Super',
           lastName: 'Batman'
-        })
+        }),
+        template: {
+          type: 'handlebars',
+          template: userTpl
+        }
       });
 
       var mainRegion = Marionette.Region.extend({
