@@ -45,14 +45,14 @@ define([
       logger.info('-----------------------');
 
       // Start Backbone history
-      logger.info('Starting Backbone')
+      logger.info('Starting Backbone');
       Backbone.history.start({
         pushState: false
       });
     };
 
     var initController = new InitController();
-    initController.bindTo(initController, 'init:complete', onSuccess, onFailure);
+    initController.listenTo(initController, 'init:complete', onSuccess, onFailure);
 
   });
   

@@ -1,19 +1,14 @@
-/*
- *
- */
-/*jslint browser: true*/
-
 define([
 
   'logger',
   'backbone.marionette',
-  'modules/models.module'
+  'modules/user/user.module'
 
 ], function(
 
   Logger,
   Marionette, 
-  ModelsModule
+  UserModule
 
   ) {
   'use strict';
@@ -24,34 +19,12 @@ define([
 
     initialize: function(resolver) {
 
-      // NOTE : [RKP] : Circular dependency here, so can't use as param
-      var App = require('app');
-
       logger.info('Init');
 
-      var WelcomeView = Marionette.ItemView.extend({
-        template: "#welcome-template",
-        className: 'welcome'
-      });
+      // Init User Module for example
 
-      var userModel = ModelsModule.userModel;
-
-      // logger(ModelsModule);
-      // logger(userModel);
-
-      var welcomeView = new WelcomeView({
-        model: userModel
-      });
-
-      var mainRegion = Marionette.Region.extend({
-        el:  "#main"
-      });
-
-      App.addRegions({
-        mainRegion: mainRegion
-      });
-
-      App.mainRegion.show(welcomeView);
+      var userModule = new UserModule();
+      userModule.welcome();
 
       resolver.resolve();
     }

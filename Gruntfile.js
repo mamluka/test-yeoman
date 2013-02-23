@@ -12,7 +12,33 @@ module.exports = function( grunt ) {
 
     // specify an alternate install location for Bower
     bower: {
-      dir: 'app/components'
+      /* 
+
+      NOTE : [RKP]
+
+      'components' dir defined in .bowerrc 
+
+      Yeoman is still in 'workaround' stages with Bower,
+      so for now it makes sense to:
+
+      $ npm install -g bower
+
+      and run the commands from the module.
+
+      E.g. running:
+
+      $ yeoman install --save 'package'
+      
+      does not write to the 'component.json'
+      even though this bug:
+
+      https://github.com/yeoman/yeoman/issues/808
+
+      has been closed for 0.9.6
+      anyway...
+
+      */
+      dir: 'components' 
     },
 
     // Coffee to JS compilation
@@ -65,6 +91,7 @@ module.exports = function( grunt ) {
       },
       reload: {
         files: [
+          '!app/scripts/vendor/components/**/*.js',
           'app/*.html',
           'app/styles/**/*.css',
           'app/scripts/**/*.js',
@@ -167,9 +194,11 @@ module.exports = function( grunt ) {
     rjs: {
       // no minification, is done by the min task
       optimize: 'none',
-      baseUrl: './scripts',
       wrap: true,
-      name: 'main'
+      baseUrl: './scripts',
+      name: 'config'
+      // mainConfigFile: './scripts/config.js',
+      // name: 'main'
     },
 
     // While Yeoman handles concat/min when using

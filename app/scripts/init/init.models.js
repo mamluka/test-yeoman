@@ -8,16 +8,14 @@ define([
   'logger',
   'jquery',
   'when',
-  'backbone.marionette',
-  'modules/models.module'
+  'backbone.marionette'
 
 ], function(
   
   Logger, 
   $,
   when,
-  Marionette, 
-  ModelsModule
+  Marionette
 
   ) {
   'use strict';

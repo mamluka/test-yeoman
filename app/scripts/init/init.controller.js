@@ -29,7 +29,7 @@ define([
 
   var logger = Logger.get('Init');
 
-  return Backbone.Marionette.Controller.extend({
+  return Marionette.Controller.extend({
 
     initialize: function() {
 
