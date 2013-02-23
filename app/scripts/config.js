@@ -11,19 +11,20 @@ require.config({
     /* vendor */
     'logger' : 'vendor/logger',
     /* components */
-    'json2' : 'vendor/components/json2/json2',
     'when' : 'vendor/components/when/when',
     'sequence' : 'vendor/components/when/sequence',
     'jquery' : 'vendor/components/jquery/jquery',
     'jquery.cookie' : 'vendor/components/jquery.cookie/jquery.cookie',
-    'underscore' : 'vendor/components/lodash/lodash',
+    'underscore' : 'vendor/components/lodash/dist/lodash',
     'backbone' : 'vendor/components/backbone/backbone',
     'backbone.wreqr' : 'vendor/components/backbone.wreqr/lib/amd/backbone.wreqr',
     'backbone.babysitter' : 'vendor/components/backbone.babysitter/lib/amd/backbone.babysitter',
     'backbone.marionette' : 'vendor/components/backbone.marionette/lib/core/amd/backbone.marionette',
     'backbone.marionette.handlebars' : 'vendor/components/backbone.marionette.handlebars/backbone.marionette.handlebars',
     'hbs' : 'vendor/components/require-handlebars-plugin/hbs',
-    'handlebars' : 'vendor/components/handlebars/handlebars',
+    // 'handlebars' : 'vendor/components/handlebars/handlebars',
+    'handlebars' : 'vendor/components/require-handlebars-plugin/Handlebars',
+    'json2' : 'vendor/components/require-handlebars-plugin/hbs/json2',
     'i18nprecompile' : 'vendor/components/require-handlebars-plugin/hbs/i18nprecompile'
 
   },
@@ -38,14 +39,23 @@ require.config({
     ,
     
     'json2': {
+      deps: [ ],
       exports: 'json2'
     }
-    
+
     ,
 
-    'hbs': {
-      deps: [ 'json2' ]
+    'handlebars': {
+      deps: [ ],
+      exports: 'handlebars'
     }
+    
+    // ,
+
+    // 'hbs': {
+    //   deps: [ 'json2' ],
+    //   exports: 'hbs'
+    // }
 
     // 'hbs': {
     //   deps: [ 'handlebars', 'i18nprecompile' ]
