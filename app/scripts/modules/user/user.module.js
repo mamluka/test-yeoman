@@ -13,7 +13,8 @@ define([
   Marionette, 
   MarionetteHandlebars, 
   UserModel,
-  WelcomeView
+  WelcomeView,
+  userTpl
 
   ) {
 
