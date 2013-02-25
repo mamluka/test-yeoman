@@ -26,34 +26,19 @@ define([
 
       logger.info('Init');
 
-    },
-
-    welcome: function() {
-    
-      // logger.info('welcome');
-
-      // NOTE : [RKP] : Circular dependency here, so can't use as param
-
       require([
 
-        'hbs!modules/user/user.template'
+        'app'
+        , 'hbs!modules/user/user.template'
 
-      ], function(template) {
-        
-        console.log('.......');
-        console.log(template);
-        console.log('.......');
-
-        var App = require('app');
+      ], function(App, template) {
 
         var welcomeView = new WelcomeView({
           model: new UserModel({
             firstName: 'Super',
             lastName: 'Batman'
           })
-          
           ,
-
           template: {
             type: 'handlebars',
             template: template
@@ -72,7 +57,6 @@ define([
 
       });
 
-      
     }
 
   });

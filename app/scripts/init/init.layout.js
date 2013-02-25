@@ -24,7 +24,7 @@ define([
       // Init User Module for example
 
       var userModule = new UserModule();
-      userModule.welcome();
+      // userModule.welcome();
 
       resolver.resolve();
     }

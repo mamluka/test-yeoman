@@ -12,6 +12,8 @@ define([
 
   'use strict';
 
-  return Marionette.ItemView.extend({});
+  return Marionette.ItemView.extend({
+    
+  });
   
 });
