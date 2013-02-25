@@ -1,20 +1,18 @@
 define([
 
-  'logger',
-  'backbone.marionette',
-  'backbone.marionette.handlebars',
-  'modules/user/user.model',
-  'modules/user/user.view.welcome',
-  'hbs!modules/user/user.template',
+  'logger'
+  , 'backbone.marionette'
+  , 'backbone.marionette.handlebars'
+  , 'modules/user/user.model'
+  , 'modules/user/user.view.welcome'
 
 ], function(
 
-  Logger, 
-  Marionette, 
-  MarionetteHandlebars, 
-  UserModel,
-  WelcomeView,
-  userTpl
+  Logger 
+  , Marionette
+  , MarionetteHandlebars
+  , UserModel
+  , WelcomeView
 
   ) {
 
@@ -32,31 +30,49 @@ define([
 
     welcome: function() {
     
-      logger.info('welcome');
+      // logger.info('welcome');
 
       // NOTE : [RKP] : Circular dependency here, so can't use as param
-      var App = require('app');
 
-      var welcomeView = new WelcomeView({
-        model: new UserModel({
-          firstName: 'Super',
-          lastName: 'Batman'
-        }),
-        template: {
-          type: 'handlebars',
-          template: userTpl
-        }
+      require([
+
+        'hbs!modules/user/user.template'
+
+      ], function(template) {
+        
+        console.log('.......');
+        console.log(template);
+        console.log('.......');
+
+        var App = require('app');
+
+        var welcomeView = new WelcomeView({
+          model: new UserModel({
+            firstName: 'Super',
+            lastName: 'Batman'
+          })
+          
+          ,
+
+          template: {
+            type: 'handlebars',
+            template: template
+          }
+        });
+
+        var mainRegion = Marionette.Region.extend({
+          el:  "#main"
+        });
+
+        App.addRegions({
+          mainRegion: mainRegion
+        });
+
+        App.mainRegion.show(welcomeView);
+
       });
 
-      var mainRegion = Marionette.Region.extend({
-        el:  "#main"
-      });
-
-      App.addRegions({
-        mainRegion: mainRegion
-      });
-
-      App.mainRegion.show(welcomeView);
+      
     }
 
   });

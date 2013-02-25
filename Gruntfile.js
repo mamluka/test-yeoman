@@ -157,7 +157,10 @@ module.exports = function( grunt ) {
     // renames JS/CSS to prepend a hash of their contents for easier
     // versioning
     rev: {
-      js: 'scripts/**/*.js',
+      js: [
+        '!**/components/**/*.js',
+        'scripts/**/*.js',
+        ],
       css: 'styles/**/*.css',
       img: 'images/**'
     },
@@ -170,8 +173,14 @@ module.exports = function( grunt ) {
 
     // update references in HTML/CSS to revved files
     usemin: {
-      html: ['**/*.html'],
-      css: ['**/*.css']
+      html: [
+        '!**/components/**/*.html',
+        '**/*.html'
+      ],
+      css: [
+        '!**/components/**/*.css',
+        '**/*.css'
+      ]
     },
 
     // HTML minification

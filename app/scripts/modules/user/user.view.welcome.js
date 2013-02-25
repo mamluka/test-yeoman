@@ -12,9 +12,6 @@ define([
 
   'use strict';
 
-  return Marionette.ItemView.extend({
-    template: "#welcome-template",
-    className: 'welcome'
-  });
+  return Marionette.ItemView.extend({});
   
 });
