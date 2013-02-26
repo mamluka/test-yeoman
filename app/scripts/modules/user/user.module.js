@@ -26,36 +26,36 @@ define([
 
       logger.info('Init');
 
-      require([
+      // require([
 
-        'app'
-        , 'hbs!modules/user/user.template'
+      //   'app'
+      //   , 'hbs!modules/user/user.template'
 
-      ], function(App, template) {
+      // ], function(App, template) {
 
-        var welcomeView = new WelcomeView({
-          model: new UserModel({
-            firstName: 'Super',
-            lastName: 'Batman'
-          })
-          ,
-          template: {
-            type: 'handlebars',
-            template: template
-          }
-        });
+      //   var welcomeView = new WelcomeView({
+      //     model: new UserModel({
+      //       firstName: 'Super',
+      //       lastName: 'Batman'
+      //     })
+      //     ,
+      //     template: {
+      //       type: 'handlebars',
+      //       template: template
+      //     }
+      //   });
 
-        var mainRegion = Marionette.Region.extend({
-          el:  "#main"
-        });
+      //   var mainRegion = Marionette.Region.extend({
+      //     el:  "#main"
+      //   });
 
-        App.addRegions({
-          mainRegion: mainRegion
-        });
+      //   App.addRegions({
+      //     mainRegion: mainRegion
+      //   });
 
-        App.mainRegion.show(welcomeView);
+      //   App.mainRegion.show(welcomeView);
 
-      });
+      // });
 
     }
 
