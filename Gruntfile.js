@@ -1,4 +1,4 @@
-// Generated on 2013-02-28 using generator-webapp 0.1.5
+// Generated on 2013-03-02 using generator-webapp 0.1.5
 'use strict';
 var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
 var mountFolder = function (connect, dir) {
@@ -136,10 +136,15 @@ module.exports = function (grunt) {
             options: {
                 sassDir: '<%= yeoman.app %>/styles',
                 cssDir: '.tmp/styles',
-                imagesDir: '<%= yeoman.app %>/images',
+                /* 
+                    NOTE : [RKP] : Begin 
+                    Not sure why I need to go up a level to use Compass asset helpers
+                    NOTE : [RKP] : End
+                */ 
+                imagesDir: '<%= yeoman.app %>/../images',
                 javascriptsDir: '<%= yeoman.app %>/scripts',
                 fontsDir: '<%= yeoman.app %>/styles/fonts',
-                importPath: 'app/components',
+                importPath: 'app/scripts/vendor/components',
                 relativeAssets: true
             },
             dist: {},
