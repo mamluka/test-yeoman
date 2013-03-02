@@ -60,15 +60,13 @@ nbproject
 .hg
 .svn
 .CVS
-intermediate
-publish
 .idea
+intermediate
+node_modules
+publish
 
 # Project specific #
 ####################
-/public/*
-/build/*
-/dist/*
-/tmp/*
-/temp/*
+temp
+dist
 components
