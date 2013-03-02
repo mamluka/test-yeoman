@@ -136,18 +136,15 @@ module.exports = function (grunt) {
             options: {
                 sassDir: '<%= yeoman.app %>/styles',
                 cssDir: '.tmp/styles',
-                /* 
-                    NOTE : [RKP] : Begin 
-                    Not sure why I need to go up a level to use Compass asset helpers
-                    NOTE : [RKP] : End
-                */ 
                 imagesDir: '<%= yeoman.app %>/../images',
                 javascriptsDir: '<%= yeoman.app %>/scripts',
                 fontsDir: '<%= yeoman.app %>/styles/fonts',
                 importPath: 'app/scripts/vendor/components',
                 relativeAssets: true
             },
-            dist: {},
+            dist: {
+                config: '.compass.rb'
+            },
             server: {
                 options: {
                     debugInfo: true
@@ -295,7 +292,7 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('default', [
-        'jshint',
+        // 'jshint',
         'test',
         'build'
     ]);

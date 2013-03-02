@@ -61,6 +61,7 @@ nbproject
 .svn
 .CVS
 .idea
+.tmp
 intermediate
 node_modules
 publish
