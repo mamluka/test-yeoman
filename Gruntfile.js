@@ -240,6 +240,14 @@ module.exports = function (grunt) {
                         '*.{ico,txt}',
                         '.htaccess'
                     ]
+                },
+                /* json */
+                {
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= yeoman.app %>/data/',
+                    dest: '<%= yeoman.dist %>/data/',
+                    src: ['*.json']
                 }]
             }
         },
