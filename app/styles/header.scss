@@ -1,34 +1,21 @@
 #header {
 
 	li {
-    width: 48px;
+    	width: 48px;
 		height: 48px;
 	}
 
 	.mail {
-		background: url('../images/fc-webicons/fc-webicon-mail.png');
+		background: image-url('fc-webicons/fc-webicon-mail.png');
 	}
 	.twitter {
-		background: url('../images/fc-webicons/fc-webicon-twitter.png');
+		background: image-url('fc-webicons/fc-webicon-twitter.png');
 	}
 	.linkedin {
-		background: url('../images/fc-webicons/fc-webicon-linkedin.png');
+		background: image-url('fc-webicons/fc-webicon-linkedin.png');
 	}
 	.github {
-		background: url('../images/fc-webicons/fc-webicon-github.png');
+		background: image-url('fc-webicons/fc-webicon-github.png');
 	}
-
-	// .mail {
-	// 	background: image-url('fc-webicons/fc-webicon-mail.png');
-	// }
-	// .twitter {
-	// 	background: image-url('fc-webicons/fc-webicon-twitter.png');
-	// }
-	// .linkedin {
-	// 	background: image-url('fc-webicons/fc-webicon-linkedin.png');
-	// }
-	// .github {
-	// 	background: image-url('fc-webicons/fc-webicon-github.png');
-	// }
 
 }

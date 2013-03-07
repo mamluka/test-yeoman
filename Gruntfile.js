@@ -134,27 +134,20 @@ module.exports = function (grunt) {
         },
         compass: {
             options: {
+                config: '.compass.rb',
                 sassDir: '<%= yeoman.app %>/styles',
                 cssDir: '.tmp/styles',
                 imagesDir: '<%= yeoman.app %>/images',
                 javascriptsDir: '<%= yeoman.app %>/scripts',
                 fontsDir: '<%= yeoman.app %>/styles/fonts',
                 importPath: 'app/scripts/vendor/components',
-                relativeAssets: true
+                // relativeAssets: true
             },
             dist: {
-                options: {
-                    imagesDir: '<%= yeoman.app %>/images',
-                    relativeAssets: true
-                }
-                // options: {
-                //     config: '.compass.rb'
-                // }
             },
             server: {
                 options: {
-                    debugInfo: true,
-                    relativeAssets: true
+                    debugInfo: true
                 }
             }
         },
