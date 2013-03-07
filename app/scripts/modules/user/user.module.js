@@ -35,8 +35,8 @@ define([
 
         var welcomeView = new WelcomeView({
           model: new UserModel({
-            firstName: 'Super',
-            lastName: 'Batman'
+            firstName: 'Handlebars',
+            lastName: 'Template'
           })
           ,
           template: {
