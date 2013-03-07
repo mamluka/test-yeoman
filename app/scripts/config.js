@@ -22,8 +22,10 @@ require.config({
     'backbone.babysitter' : 'vendor/components/backbone.babysitter/lib/amd/backbone.babysitter',
     'backbone.marionette' : 'vendor/components/backbone.marionette/lib/core/amd/backbone.marionette',
     'backbone.marionette.handlebars' : 'vendor/components/backbone.marionette.handlebars/backbone.marionette.handlebars',
-    /* Note : [RKP] : This Require plugin seems to require its own set of dependencies */
-    'hbs' : 'vendor/components/require-handlebars-plugin/hbs',
+    /* Note : [RKP] : This Require plugin seems to require its own set of dependencies 
+        Made some modifications to get it to work with lodash.
+    */
+    'hbs' : 'vendor/components-to-fork/require-handlebars-plugin/hbs.lodash',
     // 'handlebars' : 'vendor/components/handlebars/handlebars',
     'handlebars' : 'vendor/components/require-handlebars-plugin/Handlebars',
     'json2' : 'vendor/components/require-handlebars-plugin/hbs/json2',
