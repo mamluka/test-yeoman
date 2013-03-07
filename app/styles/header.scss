@@ -1,21 +1,32 @@
+$linkDimensions: 30px;
+
 #header {
 
+	ul {
+		padding-top: 15px;
+		list-style-type: none;
+		display: block;
+	}
+
 	li {
-    	width: 48px;
-		height: 48px;
+		float: left;
+		display: inline-block;
+		padding-left: 10px;
+    	width: $linkDimensions;
+		height: $linkDimensions;
 	}
 
 	.mail {
-		background: image-url('fc-webicons/fc-webicon-mail.png');
+		background: image-url('fc-webicons/fc-webicon-mail-m.png') no-repeat;
 	}
 	.twitter {
-		background: image-url('fc-webicons/fc-webicon-twitter.png');
+		background: image-url('fc-webicons/fc-webicon-twitter-m.png') no-repeat;
 	}
-	.linkedin {
-		background: image-url('fc-webicons/fc-webicon-linkedin.png');
+	.facebook {
+		background: image-url('fc-webicons/fc-webicon-facebook-m.png') no-repeat;
 	}
-	.github {
-		background: image-url('fc-webicons/fc-webicon-github.png');
+	.pinterest {
+		background: image-url('fc-webicons/fc-webicon-pinterest-m.png') no-repeat;
 	}
 
 }
