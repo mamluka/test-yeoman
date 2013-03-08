@@ -3,7 +3,7 @@ require.config({
   baseUrl: 'scripts',
 
   deps: [ 
-    // 'hbs', /* need Handlebars loader */
+    'hbs', /* need Handlebars loader */
     'main' /* main.js loads next */
   ],
 
@@ -27,7 +27,7 @@ require.config({
         This Require plugin seems to require its own set of dependencies 
         Made some modifications to get it to work with lodash.
     */
-    'hbs' : 'vendor/components-to-fork/require-handlebars-plugin/hbs.lodash',
+    'hbs' : 'vendor/components/require-handlebars-plugin-lodash/hbs.lodash',
     // 'handlebars' : 'vendor/components/handlebars/handlebars',
     'handlebars' : 'vendor/components/require-handlebars-plugin/Handlebars',
     'json2' : 'vendor/components/require-handlebars-plugin/hbs/json2',

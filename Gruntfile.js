@@ -248,6 +248,14 @@ module.exports = function (grunt) {
                     cwd: '<%= yeoman.app %>/data/',
                     dest: '<%= yeoman.dist %>/data/',
                     src: ['*.json']
+                },
+                /* handlebars */
+                {
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= yeoman.app %>/scripts/template/handlebars/',
+                    dest: '<%= yeoman.dist %>/scripts/template/handlebars/',
+                    src: ['*.hbs']
                 }]
             }
         },

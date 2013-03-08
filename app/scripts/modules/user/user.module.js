@@ -29,7 +29,7 @@ define([
       require([
 
         'app'
-        , 'hbs!modules/user/user.template'
+        , 'hbs!template/handlebars/user.template'
 
       ], function(App, template) {
 
